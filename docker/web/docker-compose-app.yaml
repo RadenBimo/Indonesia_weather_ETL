@@ -1,0 +1,17 @@
+version: '3.7'
+
+services:  
+  dashboard:
+    build: ./docker/web
+    container_name: ${WEATHER_DASHBOARD_CONTAINER} 
+    hostname: ${WEATHER_DASHBOARD_HOST}_dashboard
+    restart: always
+    ports:
+      - 5000:80
+    networks:
+      - weather-network 
+  
+networks:
+  weather-network:
+    driver: bridge
+    external: true
